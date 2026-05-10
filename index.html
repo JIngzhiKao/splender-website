@@ -1,512 +1,195 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPLENDER | Precision Polymer Engineering</title>
+    <title>SPLENDER | 精密高分子工程</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', 'Segoe UI', Roboto, sans-serif; background-color: #FAFAFA; }
-        .splender-blue { color: #0047AB; }
-        .bg-splender-blue { background-color: #0047AB; }
-        .nav-active { border-bottom: 2px solid #0047AB; color: #111; font-weight: 600; }
+        body { font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
         .hero-bg {
-            background-image: linear-gradient(rgba(26, 29, 32, 0.75), rgba(26, 29, 32, 0.85)), url('https://picsum.photos/seed/splenderhero/1920/1080?grayscale');
+            background-image: linear-gradient(rgba(12, 18, 26, 0.78), rgba(12, 18, 26, 0.86)), url("https://picsum.photos/seed/splenderhero/1920/1080?grayscale");
             background-size: cover;
             background-position: center;
         }
     </style>
 </head>
-<body>
-    <div id="root"></div>
-
-    <script type="text/babel">
-        const { useState } = React;
-
-        // --- 導覽列組件 ---
-        const Navigation = ({ activeTab, setActiveTab }) => {
-            const tabs = [
-                { id: 'home', label: '首頁 (Home)' },
-                { id: 'products', label: '產品展示 (Products)' }, // 新增的產品頁面
-                { id: 'capabilities', label: '核心能力 (Capabilities)' },
-                { id: 'company', label: '公司介紹 (Company)' },
-                { id: 'careers', label: '人才招募 (Careers)' },
-                { id: 'contact', label: '尋找合作 (Contact)' }
-            ];
-
-            return (
-                <nav className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between h-20">
-                            <div className="flex-shrink-0 flex items-center">
-                                <span className="text-2xl font-black tracking-widest text-gray-900">SPLENDER</span>
-                            </div>
-                            <div className="hidden lg:ml-6 lg:flex lg:space-x-6 overflow-x-auto">
-                                {tabs.map(tab => (
-                                    <button
-                                        key={tab.id}
-                                        onClick={() => setActiveTab(tab.id)}
-                                        className={`inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap ${activeTab === tab.id ? 'nav-active' : ''}`}
-                                    >
-                                        {tab.label}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            );
-        };
-
-        // --- 首頁 (Home) ---
-        const Home = ({ setActiveTab }) => (
-            <div className="animate-fade-in">
-                <div className="hero-bg h-[600px] flex items-center justify-center text-center px-4">
-                    <div className="max-w-4xl">
-                        <h1 className="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
-                            Precision Engineered. <br/>Globally Delivered.
-                        </h1>
-                        <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed">
-                            跨越設計與量產的絕對鴻溝。<br/>SPLENDER 專注於高透光塑膠片與精密擠出膠條的開發與製造，<br/>提供從材料科學、DFM 驗證到無縫物流的全生命週期解決方案。
-                        </p>
-                        <button 
-                            onClick={() => setActiveTab('products')}
-                            className="bg-splender-blue text-white px-8 py-4 text-sm uppercase tracking-wider font-semibold hover:bg-blue-800 transition-colors">
-                            View Engineering Showcase
-                        </button>
-                    </div>
-                </div>
-                <div className="bg-gray-900 py-12">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-700">
-                            <div className="pt-4 md:pt-0">
-                                <p className="text-4xl font-light text-white mb-2">0%</p>
-                                <p className="text-sm tracking-widest text-gray-400 uppercase">Compromise on Quality</p>
-                            </div>
-                            <div className="pt-8 md:pt-0">
-                                <p className="text-4xl font-light text-white mb-2">End-to-End</p>
-                                <p className="text-sm tracking-widest text-gray-400 uppercase">Supply Chain Control</p>
-                            </div>
-                            <div className="pt-8 md:pt-0">
-                                <p className="text-4xl font-light text-white mb-2">Global</p>
-                                <p className="text-sm tracking-widest text-gray-400 uppercase">Delivery Network</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<body class="bg-slate-50 text-slate-900 antialiased">
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+            <a href="#home" class="text-2xl font-black tracking-[0.18em]">SPLENDER</a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a class="hover:text-blue-700" href="#products">產品展示</a>
+                <a class="hover:text-blue-700" href="#capabilities">核心能力</a>
+                <a class="hover:text-blue-700" href="#company">公司介紹</a>
+                <a class="hover:text-blue-700" href="#careers">人才招募</a>
+                <a class="hover:text-blue-700" href="#contact">聯絡合作</a>
             </div>
-        );
-
-        // --- 全新模組：產品展示 (Products / Engineering Showcase) ---
-        const Products = () => (
-            <div className="py-20 bg-white min-h-screen">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-light text-gray-900 tracking-wide mb-4">Engineering Showcase.</h2>
-                        <div className="w-16 h-1 bg-splender-blue mx-auto mb-6"></div>
-                        <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                            我們不提供廉價的標準件，我們只展示量產的極限。以下是 SPLENDER 為全球頂尖客戶開發的代表性塑膠工程方案。
-                        </p>
-                    </div>
-
-                    <div className="space-y-20">
-                        {/* 產品線 1: 光學級塑膠片材 */}
-                        <div className="flex flex-col md:flex-row gap-10 items-center">
-                            <div className="md:w-1/2">
-                                <img src="https://picsum.photos/seed/sheet/700/500?grayscale" alt="Plastic Sheets" className="w-full shadow-lg border border-gray-100" />
-                            </div>
-                            <div className="md:w-1/2 space-y-4">
-                                <h3 className="text-2xl font-bold text-gray-900">光學級透光片材 <br/><span className="text-sm font-normal text-gray-500">Optical-Grade Translucent Sheets</span></h3>
-                                <p className="text-gray-600 leading-relaxed">
-                                    專為顯示器保護層、精密包裝與醫療設備儀表板設計。我們採用頂級 PC/PETG 原料，透過無塵室級別的壓延擠出工藝，確保零水波紋、零晶點與極致的透光率。
-                                </p>
-                                <div className="bg-gray-50 p-6 border-l-4 border-splender-blue">
-                                    <ul className="text-sm text-gray-700 space-y-2">
-                                        <li><strong className="text-gray-900">核心材質:</strong> PC, PETG, PMMA, 特殊複合材料</li>
-                                        <li><strong className="text-gray-900">微米級公差:</strong> 厚度均勻度控制在 ±0.02 mm 以內</li>
-                                        <li><strong className="text-gray-900">後處理能力:</strong> 雙面抗刮 (Anti-Scratch)、防眩光 (AG) 塗層</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* 產品線 2: 精密擠出膠條 */}
-                        <div className="flex flex-col md:flex-row-reverse gap-10 items-center">
-                            <div className="md:w-1/2">
-                                <img src="https://picsum.photos/seed/strip/700/500?grayscale" alt="Extruded Strips" className="w-full shadow-lg border border-gray-100" />
-                            </div>
-                            <div className="md:w-1/2 space-y-4">
-                                <h3 className="text-2xl font-bold text-gray-900">精密工業擠出膠條 <br/><span className="text-sm font-normal text-gray-500">Precision Industrial Extruded Profiles</span></h3>
-                                <p className="text-gray-600 leading-relaxed">
-                                    突破傳統膠條變形與收縮的瓶頸。我們的異型材擠出技術，專注於提供幾何尺寸極度穩定的防震、密封與結構性塑膠條，完美契合高端建築與設備需求。
-                                </p>
-                                <div className="bg-gray-50 p-6 border-l-4 border-splender-blue">
-                                    <ul className="text-sm text-gray-700 space-y-2">
-                                        <li><strong className="text-gray-900">核心材質:</strong> TPU, PVC, ABS, TPE 多材質共擠</li>
-                                        <li><strong className="text-gray-900">工程優勢:</strong> 消除冷卻收縮應力，確保長距離擠出的線性直線度</li>
-                                        <li><strong className="text-gray-900">應用場景:</strong> 建築帷幕密封、消費性電子緩衝結構、工業機殼防水邊條</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* 產品線 3: 客製化結構件 */}
-                        <div className="flex flex-col md:flex-row gap-10 items-center">
-                            <div className="md:w-1/2">
-                                <img src="https://picsum.photos/seed/injection/700/500?grayscale" alt="Injection Parts" className="w-full shadow-lg border border-gray-100" />
-                            </div>
-                            <div className="md:w-1/2 space-y-4">
-                                <h3 className="text-2xl font-bold text-gray-900">高複雜度射出結構件 <br/><span className="text-sm font-normal text-gray-500">Complex Injection Molded Components</span></h3>
-                                <p className="text-gray-600 leading-relaxed">
-                                    我們不僅提供標準管材，更具備解決最棘手 3D 幾何設計的能力。憑藉深厚的 DFM 驗證底蘊，我們為您生產無結合線、無縮水的高強度塑膠內部機構件與外殼。
-                                </p>
-                                <div className="bg-gray-50 p-6 border-l-4 border-splender-blue">
-                                    <ul className="text-sm text-gray-700 space-y-2">
-                                        <li><strong className="text-gray-900">模具能力:</strong> 高精密度鋼模設計、熱澆道系統導入</li>
-                                        <li><strong className="text-gray-900">製程品管:</strong> 嚴苛的成型參數監控，確保批次間的絕對一致性</li>
-                                        <li><strong className="text-gray-900">配套服務:</strong> 超音波熔接、埋釘、無塵塗裝一站式交付</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-
-        // --- 核心能力 (Capabilities) ---
-        const Capabilities = () => (
-            <div className="py-20 bg-gray-50 min-h-screen">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl font-light text-gray-900 tracking-wide mb-4">Omni-Process Polymer Solutions.</h2>
-                        <div className="w-16 h-1 bg-splender-blue mx-auto"></div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                        <div className="bg-white shadow-lg border border-gray-100 group hover:shadow-xl transition-shadow">
-                            <img src="https://picsum.photos/seed/cap1/600/400?grayscale" alt="Extrusion" className="w-full h-48 object-cover filter brightness-90 group-hover:brightness-100 transition" />
-                            <div className="p-8">
-                                <h3 className="text-xl font-semibold mb-3">Precision Extrusion<br/><span className="text-sm text-gray-500 font-normal">精密擠出與壓延</span></h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">高透光塑膠片與高穩定度幾何膠條。專注於消除冷卻收縮與表面水波紋，提供光學級平整度與微米級尺寸穩定性。</p>
-                            </div>
-                        </div>
-                        <div className="bg-white shadow-lg border border-gray-100 group hover:shadow-xl transition-shadow">
-                            <img src="https://picsum.photos/seed/cap2/600/400?grayscale" alt="Injection" className="w-full h-48 object-cover filter brightness-90 group-hover:brightness-100 transition" />
-                            <div className="p-8">
-                                <h3 className="text-xl font-semibold mb-3">Advanced Injection<br/><span className="text-sm text-gray-500 font-normal">高階射出成型</span></h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">消費性電子外殼與精密機構件。導入頂級模流分析，精準控制縮水率 (Sink marks) 與結合線，專治複雜幾何成型難題。</p>
-                            </div>
-                        </div>
-                        <div className="bg-white shadow-lg border border-gray-100 group hover:shadow-xl transition-shadow">
-                            <img src="https://picsum.photos/seed/cap3/600/400?grayscale" alt="Compounding" className="w-full h-48 object-cover filter brightness-90 group-hover:brightness-100 transition" />
-                            <div className="p-8">
-                                <h3 className="text-xl font-semibold mb-3">Custom Compounding<br/><span className="text-sm text-gray-500 font-normal">客製化材料科學</span></h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">製造的成敗始於材料基因。我們從源頭母粒開始精準調控抗 UV、高韌性等物理特性，確保每一批 OEM 產品符合設計初衷。</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-
-        // --- 公司介紹 (Company) ---
-        const Company = () => (
-            <div className="py-20 bg-white min-h-screen">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col lg:flex-row gap-16 items-center">
-                        <div className="lg:w-1/2">
-                            <h2 className="text-4xl font-light text-gray-900 leading-tight mb-6">
-                                Redefining Precision in <br/>Polymer Engineering.
-                            </h2>
-                            <p className="text-gray-600 mb-6 leading-relaxed font-semibold">
-                                SPLENDER is not just a manufacturer; we are your dedicated OEM integration partner.
-                            </p>
-                            <p className="text-gray-600 mb-8 leading-relaxed">
-                                我們拒絕傳統代工的被動執行模式。SPLENDER 將國際頂尖硬體開發的製程管理標準導入塑膠產業。從嚴苛的 DFM (可製造性設計) 驗證、駐廠級的製程稽核，到全球無縫的物流防護，我們為客戶提供「無盲區」的一站式代工方案。您只需專注於創新，量產的良率，由我們捍衛。
-                            </p>
-                            <div className="grid grid-cols-2 gap-8 border-t border-gray-200 pt-8">
-                                <div>
-                                    <h4 className="font-bold text-gray-900 mb-2">DFM Validation</h4>
-                                    <p className="text-sm text-gray-500">開模前消弭 99% 量產風險</p>
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-gray-900 mb-2">OEM Execution</h4>
-                                    <p className="text-sm text-gray-500">超越業界的微米級公差控管</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="lg:w-1/2">
-                            <img src="https://picsum.photos/seed/companyimg/800/900?grayscale" alt="Engineering Team" className="w-full h-auto shadow-2xl" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-
-       
-        // --- 人才招募 (Careers) 升級版：送出後自動清空 ---
-        const Careers = () => {
-            const [selectedJob, setSelectedJob] = useState(null);
-            const [formData, setFormData] = useState({ name: '', phone: '', email: '', intro: '' });
-
-            const jobs = [
-                {
-                    id: 'dfm',
-                    title: 'Senior DFM Engineer',
-                    subtitle: '資深可製造性工程師',
-                    location: 'SHANGHAI, CHINA',
-                    shortDesc: '負責高階塑膠件與擠出件的投產前評估。需精通模流分析，具備解決縮水、變形等工程挑戰的實戰經驗。',
-                    details: '作為資深 DFM 工程師，您將是研發與量產之間的關鍵橋樑。您需要運用在頂尖消費性電子或精密工業領域的經驗，在模具開發初期就抓出潛在的成型風險。',
-                    reqs: ['5年以上塑膠射出/擠出模具設計與模流分析 (Moldflow) 經驗。', '精通 CAD 軟體與模具結構分析。', '具備解決縮水、變形、結合線等成型缺陷的實戰能力。', '有國際大廠 (如 Apple, HP) 專案合作經驗者優先。']
-                },
-                {
-                    id: 'qa',
-                    title: 'QA / Validation Specialist',
-                    subtitle: '品質校驗專家',
-                    location: 'SHANGHAI, CHINA',
-                    shortDesc: '拒絕形式主義的品管。制定從 EVT 到 PV 階段的量測標準與測試計劃，運用二次元光學等儀器確保微米級公差達標。',
-                    details: '我們需要您用最嚴苛的標準來折磨我們的產品。您將負責主導新產品的品質驗證計畫，從源頭材料到最終成品，建立不可妥協的量測 SOP。',
-                    reqs: ['熟悉 ISO 9001 系統與各種品管手法 (SPC, FMEA, CPK)。', '精通二次元、三次元、色差儀等精密量測儀器。', '能獨立編寫英文 8D Report 與跨部門進行品質檢討。', '具備高透光光學級塑膠片材檢驗經驗者加分。']
-                },
-                {
-                    id: 'pm',
-                    title: 'Supply Chain Project Manager',
-                    subtitle: '供應鏈專案經理',
-                    location: 'SHANGHAI, CHINA',
-                    shortDesc: '掌控協力廠的產能與良率。需具備 Vendor Audit 能力，能強勢管理外部資源，確保跨製程整合專案順利落地。',
-                    details: '這不是一個單純排時程的職位。您需要像一個交響樂團指揮，協調內部工程團隊與外部模具廠、材料供應商，在極限的交期內完成 NPI (新產品導入) 專案。',
-                    reqs: ['具備 3 年以上製造業專案管理 (PM) 經驗。', '熟悉塑膠成型製程與模具開發週期。', '極強的抗壓性與談判能力，能強勢推動供應商解決問題。', '英文流利，能直接對接歐美客戶進行專案匯報。']
-                }
-            ];
-
-            const handleChange = (e) => {
-                setFormData({ ...formData, [e.target.name]: e.target.value });
-            };
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                const subject = encodeURIComponent(`Job Application: ${selectedJob.title} - ${formData.name}`);
-                const body = encodeURIComponent(
-                    `你好 HR 團隊,\n\n我是 ${formData.name}，我想應徵 ${selectedJob.title} 職位。\n\n` +
-                    `【基本聯絡資訊】\n姓名: ${formData.name}\n電話: ${formData.phone}\nEmail: ${formData.email}\n\n` +
-                    `【簡短自我介紹】\n${formData.intro}\n\n` +
-                    `-----------------------------------\n` +
-                    `⚠️ (系統提示：請申請者務必將您的「履歷 PDF」與「作品集」作為附件加入此郵件後，再點擊送出！)\n`
-                );
-                
-                // 1. 觸發 Email 軟體
-                window.location.href = `mailto:splenderhroffice@gmail.com?subject=${subject}&body=${body}`;
-                
-                // 2. 清空表單資料 (這就是你要的「不保留資訊」)
-                setFormData({ name: '', phone: '', email: '', intro: '' });
-                
-                // 3. 關閉職缺詳情頁，回到列表，營造畫面刷新的感覺
-                setSelectedJob(null);
-                
-                // 4. 將畫面滾動到最上方
-                window.scrollTo(0, 0);
-            };
-
-            return (
-                <div className="py-20 bg-white min-h-screen">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        {!selectedJob ? (
-                            <div className="animate-fade-in">
-                                <div className="text-center mb-16">
-                                    <h2 className="text-3xl font-light text-gray-900 tracking-wide mb-4">Join the Engineering Elite.</h2>
-                                    <div className="w-16 h-1 bg-splender-blue mx-auto mb-6"></div>
-                                    <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                                        <br/>
-                                        如果您具備頂尖硬體品牌的驗證思維，不甘於傳統代工廠的平庸，SPLENDER 是您的完美戰場。
-                                    </p>
-                                </div>
-                                <div className="max-w-4xl mx-auto space-y-6">
-                                    {jobs.map(job => (
-                                        <div key={job.id} onClick={() => setSelectedJob(job)} className="border border-gray-200 p-8 hover:border-splender-blue transition-colors group bg-gray-50 hover:bg-white cursor-pointer shadow-sm hover:shadow-md">
-                                            <div className="flex flex-col sm:flex-row justify-between sm:items-center border-b border-gray-200 pb-4 mb-4 gap-4">
-                                                <div>
-                                                    <h3 className="text-xl font-bold text-gray-900">{job.title} <span className="text-sm font-normal text-gray-500 ml-2">{job.subtitle}</span></h3>
-                                                </div>
-                                                <span className="bg-gray-200 text-gray-700 px-3 py-1 text-xs tracking-wider self-start sm:self-auto">{job.location}</span>
-                                            </div>
-                                            <p className="text-gray-600 text-sm mb-6 leading-relaxed">{job.shortDesc}</p>
-                                            <button className="text-splender-blue font-semibold text-sm group-hover:underline flex items-center">
-                                                View Details & Apply <span className="ml-1">&rarr;</span>
-                                            </button>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="max-w-4xl mx-auto animate-fade-in">
-                                <button onClick={() => setSelectedJob(null)} className="text-gray-500 hover:text-splender-blue mb-8 flex items-center text-sm font-semibold transition-colors">
-                                    &larr; Back to all positions
-                                </button>
-                                
-                                <div className="bg-gray-50 border border-gray-200 p-8 md:p-10 mb-10 border-t-4 border-splender-blue shadow-sm">
-                                    <div className="mb-8 border-b border-gray-200 pb-6">
-                                        <h2 className="text-3xl font-bold text-gray-900 mb-2">{selectedJob.title}</h2>
-                                        <p className="text-gray-500">{selectedJob.subtitle} • {selectedJob.location}</p>
-                                    </div>
-                                    
-                                    <div className="space-y-8 mb-10">
-                                        <div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-3">Role Overview (職務概述)</h4>
-                                            <p className="text-gray-600 leading-relaxed text-sm">{selectedJob.details}</p>
-                                        </div>
-                                        <div>
-                                            <h4 className="text-lg font-bold text-gray-900 mb-3">Key Requirements (核心要求)</h4>
-                                            <ul className="list-disc list-inside text-gray-600 text-sm space-y-2">
-                                                {selectedJob.reqs.map((req, idx) => <li key={idx}>{req}</li>)}
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div className="bg-white p-6 md:p-8 border border-gray-200 shadow-sm">
-                                        <h4 className="text-xl font-bold text-gray-900 mb-6 border-b border-gray-100 pb-4">Application Form</h4>
-                                        <form onSubmit={handleSubmit} className="space-y-5">
-                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                                <div>
-                                                    <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Full Name *</label>
-                                                    <input type="text" name="name" required value={formData.name} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors" placeholder="您的姓名" />
-                                                </div>
-                                                <div>
-                                                    <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Phone Number *</label>
-                                                    <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors" placeholder="09XX-XXX-XXX" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Email Address *</label>
-                                                <input type="email" name="email" required value={formData.email} onChange={handleChange} className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors" placeholder="your@email.com" />
-                                            </div>
-                                            <div>
-                                                <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Short Introduction *</label>
-                                                <textarea name="intro" required value={formData.intro} onChange={handleChange} rows="3" className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors resize-none" placeholder="簡短說明您為什麼適合這個職位，以及您的技術優勢..."></textarea>
-                                            </div>
-                                            <button type="submit" className="w-full bg-splender-blue text-white py-4 font-semibold tracking-widest hover:bg-blue-800 transition-colors mt-2">
-                                                GENERATE EMAIL DRAFT
-                                            </button>
-                                            <p className="text-xs text-center text-gray-500 mt-3">點擊後將啟動您的 Email 軟體，請記得在信件中附上您的 PDF 履歷。</p>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            );
-        };
-
-        // --- 尋找合作 (Contact) ---
-        const Contact = () => (
-            <div className="py-20 bg-gray-50 min-h-screen flex items-center">
-                <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                    <div className="bg-white p-10 md:p-16 shadow-xl border-t-4 border-splender-blue">
-                        <div className="text-center mb-10">
-                            <h2 className="text-3xl font-light text-gray-900 mb-3">Talk Directly to Engineering.</h2>
-                            <p className="text-gray-500 text-sm">拋棄漫長的業務推銷。請提供專案細節，我們將在 24 小時內啟動 DFM 初步審查。</p>
-                        </div>
-                        <form action="https://formspree.io/f/xpqyyajw" method="POST" className="space-y-6">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-            <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Name</label>
-            {/* 加入 name="name" 並且設定 required (必填) */}
-            <input type="text" name="name" required className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors" placeholder="Your Full Name" />
         </div>
-        <div>
-            <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Company Email</label>
-            {/* 加入 name="email" */}
-            <input type="email" name="email" required className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors" placeholder="work@company.com" />
+    </nav>
+
+    <header id="home" class="hero-bg min-h-[620px] flex items-center">
+        <div class="max-w-7xl mx-auto px-5 py-24 text-white">
+            <p class="text-sm tracking-[0.28em] uppercase text-blue-200 font-bold mb-5">Precision Polymer Engineering</p>
+            <h1 class="max-w-4xl text-5xl md:text-7xl font-black leading-tight mb-7">以精密製程，交付穩定可靠的高分子零件。</h1>
+            <p class="max-w-3xl text-lg md:text-xl text-slate-200 leading-relaxed mb-10">SPLENDER 專注透明片材、精密擠出條、射出成型零件與客製化材料整合，協助品牌從設計驗證、DFM 評估到量產交付建立完整供應鏈。</p>
+            <a href="#products" class="inline-flex bg-blue-700 hover:bg-blue-800 text-white px-7 py-4 text-sm font-bold tracking-widest">查看工程案例</a>
         </div>
-    </div>
-    <div>
-        <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Project Stage</label>
-        {/* 加入 name="project_stage" */}
-        <select name="project_stage" className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors text-gray-700">
-            <option value="Concept">Concept / ID (概念設計階段)</option>
-            <option value="EVT">Engineering Validation / EVT (工程打樣階段)</option>
-            <option value="PV">Production / PV (準備開模量產)</option>
-            <option value="Transfer">Mass Production Transfer (現有模具轉移)</option>
-        </select>
-    </div>
-    <div>
-        <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Project Details & Tolerance Requirements</label>
-        {/* 加入 name="message" */}
-        <textarea name="message" required rows="4" className="w-full bg-gray-50 border border-gray-200 px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors resize-none" placeholder="請簡述您的需求，包含材料特性 (如抗UV、耐溫) 或特定的幾何公差標準..."></textarea>
-    </div>
-    {/* 按鈕必須加上 type="submit" */}
-    <button type="submit" className="w-full bg-splender-blue text-white py-4 font-semibold tracking-widest hover:bg-blue-800 transition-colors mt-4">
-        SUBMIT FOR DFM REVIEW
-    </button>
-</form>
+    </header>
+
+    <section class="bg-slate-950 text-white py-12">
+        <div class="max-w-7xl mx-auto px-5 grid md:grid-cols-3 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-light mb-2">0%</div>
+                <p class="text-sm tracking-widest text-slate-400">品質妥協</p>
+            </div>
+            <div>
+                <div class="text-4xl font-light mb-2">全流程</div>
+                <p class="text-sm tracking-widest text-slate-400">供應鏈控管</p>
+            </div>
+            <div>
+                <div class="text-4xl font-light mb-2">全球</div>
+                <p class="text-sm tracking-widest text-slate-400">交付網絡</p>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="products" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-5">
+                <div class="text-center mb-16">
+                    <p class="text-blue-700 font-bold tracking-[0.2em] text-sm mb-3">ENGINEERING SHOWCASE</p>
+                    <h2 class="text-4xl font-light mb-5">產品與製程展示</h2>
+                    <p class="max-w-2xl mx-auto text-slate-600 leading-relaxed">我們展示的不是標準品型錄，而是可被量產、驗證與長期交付的工程解決方案。</p>
+                </div>
+
+                <div class="space-y-20">
+                    <article class="grid md:grid-cols-2 gap-10 items-center">
+                        <img src="https://picsum.photos/seed/sheet/900/640?grayscale" class="w-full border border-slate-100 shadow-lg" alt="透明片材">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4">光學級透明片材</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">適用顯示器保護片、精密包裝與醫療設備面板。透過穩定原料與潔淨製程，降低水波紋、晶點與透光率波動。</p>
+                            <ul class="bg-slate-50 border-l-4 border-blue-700 p-6 space-y-2 text-sm text-slate-700">
+                                <li><strong>核心材料：</strong>PC、PETG、PMMA 與特殊複合材料</li>
+                                <li><strong>公差控管：</strong>厚度均勻度可依專案需求校準</li>
+                                <li><strong>後處理能力：</strong>抗刮、霧面、防眩光與表面塗層</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="md:order-2">
+                            <img src="https://picsum.photos/seed/strip/900/640?grayscale" class="w-full border border-slate-100 shadow-lg" alt="擠出條">
+                        </div>
+                        <div class="md:order-1">
+                            <h3 class="text-3xl font-bold mb-4">精密工業擠出條</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">針對密封、防震與結構支撐需求設計，重視長距離擠出後的尺寸穩定、韌性與表面一致性。</p>
+                            <ul class="bg-slate-50 border-l-4 border-blue-700 p-6 space-y-2 text-sm text-slate-700">
+                                <li><strong>核心材料：</strong>TPU、PVC、ABS、TPE 多材料共擠</li>
+                                <li><strong>工程優勢：</strong>降低冷卻收縮應力並維持直線度</li>
+                                <li><strong>應用場景：</strong>建築密封、設備緩衝與消費電子結構件</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="grid md:grid-cols-2 gap-10 items-center">
+                        <img src="https://picsum.photos/seed/injection/900/640?grayscale" class="w-full border border-slate-100 shadow-lg" alt="射出成型零件">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4">複雜射出成型零件</h3>
+                            <p class="text-slate-600 leading-relaxed mb-6">從 DFM 檢討、模流分析、模具設計到量產驗證，協助客戶處理縮水、翹曲、結合線與外觀面要求。</p>
+                            <ul class="bg-slate-50 border-l-4 border-blue-700 p-6 space-y-2 text-sm text-slate-700">
+                                <li><strong>模具能力：</strong>高精度鋼模、熱澆道與多穴設計</li>
+                                <li><strong>製程品管：</strong>成型參數監控與批次追溯</li>
+                                <li><strong>配套服務：</strong>超音波熔接、埋釘、組裝與包裝</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="capabilities" class="py-24 bg-slate-100">
+            <div class="max-w-7xl mx-auto px-5">
+                <h2 class="text-4xl font-light text-center mb-14">核心能力</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white border border-slate-200 p-8 shadow-sm">
+                        <h3 class="text-xl font-bold mb-3">精密擠出</h3>
+                        <p class="text-slate-600 leading-relaxed">穩定控制熔融、冷卻與牽引速度，確保尺寸一致與表面品質。</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-8 shadow-sm">
+                        <h3 class="text-xl font-bold mb-3">射出成型</h3>
+                        <p class="text-slate-600 leading-relaxed">以模流分析與製程視窗建立可量產的成型條件。</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-8 shadow-sm">
+                        <h3 class="text-xl font-bold mb-3">材料客製</h3>
+                        <p class="text-slate-600 leading-relaxed">依照抗 UV、耐熱、透明度、柔韌度等規格調整材料方案。</p>
                     </div>
                 </div>
             </div>
-        );
+        </section>
 
-        // --- 主應用程式與 Footer ---
-        const App = () => {
-            const [activeTab, setActiveTab] = useState('home');
-
-            const renderContent = () => {
-                switch(activeTab) {
-                    case 'home': return <Home setActiveTab={setActiveTab} />;
-                    case 'products': return <Products />; // 呼叫產品頁面
-                    case 'capabilities': return <Capabilities />;
-                    case 'company': return <Company />;
-                    case 'careers': return <Careers />;
-                    case 'contact': return <Contact />;
-                    default: return <Home setActiveTab={setActiveTab} />;
-                }
-            };
-
-            return (
-                <div className="min-h-screen flex flex-col">
-                    <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
-                    <main className="flex-grow">
-                        {renderContent()}
-                    </main>
-                    
-                    {/* 包含你最新聯絡資訊的專業版 Footer */}
-                    <footer className="bg-gray-900 pt-12 pb-8 border-t border-gray-800 text-gray-400 text-sm">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-start gap-8">
-                            {/* 左下角：公司聯絡資訊 */}
-                            <div className="flex flex-col space-y-3 text-left">
-                                <span className="text-white text-xl font-bold tracking-widest mb-2">SPLENDER</span>
-                                <div className="flex items-start space-x-3">
-                                    <span className="text-gray-500 mt-1">📍</span>
-                                    <p className="leading-relaxed">
-                                        新北市新莊區新泰路289號<br/>
-                                        <span className="text-xs text-gray-500 uppercase tracking-wider">Taipei Operations Center</span>
-                                    </p>
-                                </div>
-                                <div className="flex items-center space-x-3">
-                                    <span className="text-gray-500">📞</span>
-                                    <p>+886 0910-607-781</p>
-                                </div>
-                                <div className="flex items-center space-x-3">
-                                    <span className="text-gray-500">✉️</span>
-                                    <p>JohnKaoPL@Gmail.com</p>
-                                </div>
-                            </div>
-
-                            {/* 右下角：版權與附加連結 */}
-                            <div className="text-left md:text-right flex flex-col justify-end h-full mt-auto md:ml-auto">
-                                <p className="text-gray-300 mb-1 font-semibold tracking-wide">Precision Polymer Engineering.</p>
-                                <p className="text-gray-600">&copy; 2026 SPLENDER. All rights reserved.</p>
-                            </div>
+        <section id="company" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
+                <div>
+                    <p class="text-blue-700 font-bold tracking-[0.2em] text-sm mb-4">ABOUT SPLENDER</p>
+                    <h2 class="text-4xl font-light mb-6">重新定義高分子工程的精準度。</h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">SPLENDER 不只是製造商，更是 OEM 整合夥伴。我們把國際硬體開發的流程管理導入塑膠產業，協助客戶降低量產風險、縮短溝通成本，並維持穩定品質。</p>
+                    <div class="grid grid-cols-2 gap-6 border-t border-slate-200 pt-6">
+                        <div>
+                            <h3 class="font-bold mb-1">DFM 驗證</h3>
+                            <p class="text-sm text-slate-500">在開模前排除大部分量產風險。</p>
                         </div>
-                    </footer>
+                        <div>
+                            <h3 class="font-bold mb-1">OEM 執行</h3>
+                            <p class="text-sm text-slate-500">以穩定公差與批次一致性支援交付。</p>
+                        </div>
+                    </div>
                 </div>
-            );
-        };
+                <img src="https://picsum.photos/seed/companyimg/900/980?grayscale" class="w-full shadow-2xl" alt="工程團隊">
+            </div>
+        </section>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+        <section id="careers" class="py-24 bg-slate-50">
+            <div class="max-w-5xl mx-auto px-5">
+                <div class="text-center mb-12">
+                    <p class="text-blue-700 font-bold tracking-[0.2em] text-sm mb-3">CAREERS</p>
+                    <h2 class="text-4xl font-light mb-5">加入工程團隊</h2>
+                    <p class="text-slate-600">我們正在尋找熟悉材料、模具、品保與供應鏈管理的人才，一起建立更可靠的製造服務。</p>
+                </div>
+                <div class="space-y-5">
+                    <div class="bg-white border border-slate-200 p-6">
+                        <h3 class="text-xl font-bold">資深 DFM 工程師</h3>
+                        <p class="text-slate-600 mt-2">負責產品結構檢討、模具可製造性評估與量產風險預防。</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-6">
+                        <h3 class="text-xl font-bold">品質驗證專員</h3>
+                        <p class="text-slate-600 mt-2">建立檢驗流程、追蹤批次品質並協助客戶完成驗證文件。</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-6">
+                        <h3 class="text-xl font-bold">供應鏈專案經理</h3>
+                        <p class="text-slate-600 mt-2">整合材料、模具、外包製程與交期，確保專案如期落地。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="bg-slate-950 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between gap-8">
+            <div>
+                <div class="text-white text-xl font-black tracking-[0.18em] mb-3">SPLENDER</div>
+                <p>新北市新莊區新泰路 89 號</p>
+                <p>+886 0910-607-781</p>
+                <p>JohnKaoPL@Gmail.com</p>
+            </div>
+            <div class="md:text-right">
+                <p class="text-white font-bold mb-1">精密高分子工程與 OEM 量產服務</p>
+                <p>&copy; 2026 SPLENDER. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
